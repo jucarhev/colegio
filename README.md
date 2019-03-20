@@ -1,2 +1,3 @@
 # Sistema_Escuela
-Sistema de administración escolar escrito en CodeIgniter
+Sistema de administración escolar programado en CodeIgniter, la base de datos va incluida y con las modificaciones que se vayan haciendo a lo largo del proyecto, tambien hay un archivo llamado code.md, donde listo todos los codigos que creo de utilidad.  
+**Nota:** El proyecto esta en desarrollo por lo que no se recomienda usar, hasta que se termine. Los archivo necesarios necesarios para entender la logica que seguio el proceso sera entregado junto con el manual cuando el proyecto se haya terminado.
