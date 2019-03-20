@@ -118,3 +118,9 @@ CREATE TABLE profesor(
 	profesion varchar(100)
 )ENGINE=INNODB;
 
+
+
+
+CREATE USER 'colegio'@'localhost' identified by 'colegio';
+GRANT ALL PRIVILEGES ON colegio.* TO colegio@localhost;
+FLUSH PRIVILEGES;
