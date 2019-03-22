@@ -11,7 +11,10 @@ class Grados_model extends CI_Model {
 		return $this->db->get('grados')->result();
 	}
 
-	public function store($data){}
+	public function store($data){
+		return $this->db->insert('grados', $data);
+	}
+
 	public function update($is,$data){}
 	public function delete($id){}
 

@@ -13,8 +13,8 @@ Controlador principal
 
 ## Grados
 Los grados son la division del  tiempo en el que el estudiante esta en la escuela, pueden ser semestres o cuatrimestres, a continuacion se listan las cosas que faltan por hacer dentro de proceso.
-- [ ] Crear controlador grados
-- [ ] Metodo create(new) con modelo y vista
+- [x] Crear controlador grados
+- [x] Metodo create(new) con modelo y vista
 - [ ] Metodo read(index) con modelo y vista
 - [ ] Metodo update(edit) con modelo y vista
 - [ ] Metodo delete con modelo

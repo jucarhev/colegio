@@ -18,7 +18,37 @@ class Grados extends CI_Controller {
 		$this->vistas('Nuevo Grado','grados/new');
 	}
 
-	public function create(){}
+	public function create(){
+		$nombre = $this->input->post('nombre');
+		$inicio = $this->input->post('inicio');
+		$fin = $this->input->post('fin');
+		$tipo = $this->input->post('tipo');
+
+		// Validaciones
+		$this->form_validation->set_rules('nombre','Nombre','required|is_unique[grados.nombre]');
+		$this->form_validation->set_rules('tipo','Tipo','required');
+
+		if ($this->form_validation->run() == TRUE) {
+			$data = array(
+				'nombre' => $nombre,
+				'inicio' => $inicio,
+				'fin' => $fin,
+				'tipo' => $tipo,
+				'status' => 'Inactivo'
+			);
+
+			if ($this->Grados_model->store($data)) {
+				$this->session->set_flashdata('Success','Registro guardado');
+				redirect(url_base().'grados/index');
+			}else{
+				$this->session->set_flashdata('Error','Registro no guardado');
+				redirect(url_base().'grados/new');
+			}
+		} else {
+			$this->new();
+		}
+
+	}
 	
 	public function show($id){
 		$this->vistas('Nuevo Grado','grados/show',array('grado'=>$this->Grados_model->show($id)));
