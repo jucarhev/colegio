@@ -7,8 +7,22 @@ class Grados_model extends CI_Model {
 		parent::__construct();
 	}
 
-	public function get_all(){
-		return $this->db->get('grados')->result();
+	public function get_all($per_page=false,$offset= 0,$search=''){
+		if ($search != '') {
+			$this->db->like('nombre',$search);
+
+			if ($per_page == false and $offset == 0) {
+				return $this->db->get('grados')->result();
+			}else{
+				return $this->db->get('grados',$per_page,$offset)->result();
+			}
+		}else{
+			if ($per_page == false and $offset == 0) {
+				return $this->db->get('grados')->result();
+			}else{
+				return $this->db->get('grados',$per_page,$offset)->result();
+			}
+		}
 	}
 
 	public function store($data){
@@ -17,6 +31,10 @@ class Grados_model extends CI_Model {
 
 	public function update($is,$data){}
 	public function delete($id){}
+
+	public function count_grados(){
+		return $this->db->get('grados')->result();
+	}
 
 }
 

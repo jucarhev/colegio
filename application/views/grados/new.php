@@ -6,35 +6,55 @@
 	</div>
 	<div class="panel-body">
 
-		<form action="<?= base_url('grados/create') ?>" method="POST" role="form">
+		<?php echo form_open('grados/create'); ?>
 
 			<div class="form-group">
-				<label for="">Nombre</label>
-				<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre del grado" value="<?php echo set_value('nombre'); ?>">
+				<label for=""><?php echo 'Nombre'; ?></label>
+				<?php 
+				$data = array(
+					'type'  => 'text',
+					'name'  => 'nombre',
+					'id'    => 'nombre',
+					'value' => set_value('nombre'),
+					'class' => 'form-control');
+					echo form_input($data); ?>
 				<?php echo form_error('nombre','<span class="help-block">','</span>'); ?>
 			</div>
 
 			<div class="form-group">
 				<label for="">Fecha inicio</label>
-				<input type="date" class="form-control" id="inicio" name="inicio">
+				<?php 
+				$data = array(
+					'type'  => 'date',
+					'name'  => 'inicio',
+					'id'    => 'inicio',
+					'class' => 'form-control');
+					echo form_input($data); ?>
 			</div>
 
 			<div class="form-group">
 				<label for="">Fecha fin</label>
-				<input type="date" class="form-control" id="fin" name="fin">
+				<?php 
+				$data = array(
+					'type'  => 'date',
+					'name'  => 'fin',
+					'id'    => 'fin',
+					'class' => 'form-control');
+					echo form_input($data); ?>
 			</div>
 
 			<div class="form-group">
 				<label for="">Tipo</label>
-				<select name="tipo" id="tipo" class="form-control">
-					<option value="Semestre">Semestre</option>
-					<option value="Cuatrimestre">Cuatrimestre</option>
-				</select>
-				<?php echo form_error('tipo'); ?>
+				<?php 
+				$data = array(
+					'Semestre'  => 'Semestre',
+					'Cuatrimestre'  => 'Cuatrimestre');
+					echo form_dropdown('tipo',$data,'Semestre',array('class'=>'form-control')); ?>
 			</div>
 
-			<button type="submit" class="btn btn-primary">Submit</button>
-		</form>
+			<?php echo form_submit('Aceptar', 'Guardar registro',array('class'=>'btn btn-primary')); ?>
+
+		<?php echo form_close(); ?>
 	</div>
 
 </div>

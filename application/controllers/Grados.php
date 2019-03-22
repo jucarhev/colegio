@@ -10,8 +10,18 @@ class Grados extends CI_Controller {
 		$this->menu = array("menu" => $this->Home_model->menu_lateral());
 	}
 
-	public function index(){
-		$this->vistas('Grados','grados/index',array('grados'=> $this->Grados_model->get_all()));
+	public function index($offset = 0){
+		$search = '';
+		if ($this->input->post('search')) {
+			$search = $this->input->post('search');
+		}
+
+		$config['base_url'] = base_url('grados/index');
+		$config['per_page'] = 5;
+		$config['total_rows'] = count($this->Grados_model->count_grados());
+		$this->pagination->initialize($config);
+
+		$this->vistas('Grados','grados/index',array('grados'=> $this->Grados_model->get_all($config['per_page'],$offset,$search)));
 	}
 
 	public function new(){
@@ -19,9 +29,9 @@ class Grados extends CI_Controller {
 	}
 
 	public function create(){
-		$nombre = $this->input->post('nombre');
-		$inicio = $this->input->post('inicio');
-		$fin = $this->input->post('fin');
+		$nombre = $this->input->post('nombre',TRUE);
+		$inicio = $this->input->post('inicio',TRUE);
+		$fin = $this->input->post('fin',TRUE);
 		$tipo = $this->input->post('tipo');
 
 		// Validaciones
@@ -39,15 +49,14 @@ class Grados extends CI_Controller {
 
 			if ($this->Grados_model->store($data)) {
 				$this->session->set_flashdata('Success','Registro guardado');
-				redirect(url_base().'grados/index');
+				redirect(base_url().'grados/index');
 			}else{
 				$this->session->set_flashdata('Error','Registro no guardado');
-				redirect(url_base().'grados/new');
+				redirect(base_url().'grados/new');
 			}
 		} else {
 			$this->new();
 		}
-
 	}
 	
 	public function show($id){

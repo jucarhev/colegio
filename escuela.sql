@@ -4,7 +4,7 @@ USE escuela;
 
 CREATE TABLE grados(
 	id int(10) not null auto_increment primary key,
-	nombre varchar(50),
+	nombre varchar(50) unique,
 	tipo varchar(50),
 	inicio date,
 	fin date,
