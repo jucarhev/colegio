@@ -64,12 +64,48 @@ class Grados extends CI_Controller {
 	}
 
 	public function edit($id){
-		$this->vistas('Nuevo Grado','grados/edit');
+		$this->vistas('Editar Grado','grados/edit',array('grado'=>$this->Grados_model->show($id)));
 	}
 
-	public function update($id){}
+	public function update(){
+		$id= $this->input->post('id',TRUE);
+		$nombre = $this->input->post('nombre',TRUE);
+		$inicio = $this->input->post('inicio',TRUE);
+		$fin = $this->input->post('fin',TRUE);
+		$tipo = $this->input->post('tipo',TRUE);
 
-	public function delete($id){}
+		$this->form_validation->set_rules('nombre','Nombre','required');
+		$this->form_validation->set_rules('tipo','Tipo','required');
+
+		if ($this->form_validation->run() == TRUE) {
+			$data = array(
+				'nombre' => $nombre,
+				'inicio' => $inicio,
+				'fin' => $fin,
+				'tipo' => $tipo,
+			);
+
+			if ($this->Grados_model->update($id,$data)) {
+				$this->session->set_flashdata('Success','Registro guardado');
+				redirect(base_url().'grados/index');
+			}else{
+				$this->session->set_flashdata('Error','Registro no guardado');
+				redirect(base_url().'grados/edit/'.$id);
+			}
+		} else {
+			$this->edit($id);
+		}
+	}
+
+	public function delete($id){
+		if($this->Grados_model->delete($id)){
+			$this->session->set_flashdata('Success','Registro eliminado');
+			redirect(base_url().'grados/index'); 
+		}else{
+			$this->session->set_flashdata('Error','Registro no eliminado');
+			redirect(base_url().'grados/index');
+		}
+	}
 
 	/* Metodos privados */
 	private function vistas($title='Dashboard',$vista='home/index',$data=null){

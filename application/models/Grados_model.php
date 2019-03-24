@@ -29,8 +29,21 @@ class Grados_model extends CI_Model {
 		return $this->db->insert('grados', $data);
 	}
 
-	public function update($is,$data){}
-	public function delete($id){}
+	public function show($id){
+		$this->db->where('id', $id);
+		$resultado = $this->db->get('grados');
+		return $resultado->row();
+	}
+
+	public function update($id,$data){
+		$this->db->where('id', $id);
+		return $this->db->update('grados', $data);
+	}
+
+	public function delete($id){
+		$this->db->where('id', $id);
+		return $this->db->delete('grados');
+	}
 
 	public function count_grados(){
 		return $this->db->get('grados')->result();

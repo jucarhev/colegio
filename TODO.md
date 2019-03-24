@@ -16,20 +16,21 @@ Los grados son la division del  tiempo en el que el estudiante esta en la escuel
 - [x] Crear controlador grados
 - [x] Metodo create(new) con modelo y vista
 - [x] Metodo read(index) con modelo y vista
-- [ ] Metodo update(edit) con modelo y vista
-- [ ] Metodo delete con modelo
-- [ ] Crear vistas para grados
-- [ ] Crear modelo grados
+- [x] Metodo update(edit) con modelo y vista
+- [x] Metodo delete con modelo
+- [x] Crear vistas para grados
+- [x] Crear modelo grados
 - [ ] Corregir el buscador y paginacion
 - [ ] Llenado de datos aleatorios
-- [ ] Validaciones
+- [x] Validaciones
 - [x] Paginacion(index)
 - [x] Buscador(index)
-- [ ] Mensages flash
+- [x] Mensages flash
 - [ ] Vista del progreso general(disponible solo hasta la creacion del dashboard)
 - [ ] Vista calendario(disponible solo cuando el calendario se haga)
 - [ ] Avisar cuando se tremina o empieza un grado
 - [ ] Integrar este controlador al sistema.
+- [ ] Mejorar la vista con iconos
 
 ## Grupos
 Los grupos pertenecen a los grados y dentro se encuentran los alumnos agrupados, dependiendo de en que grado se encuentren dependera su numero.
