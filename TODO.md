@@ -20,42 +20,67 @@ Los grados son la division del  tiempo en el que el estudiante esta en la escuel
 - [x] Metodo delete con modelo
 - [x] Crear vistas para grados
 - [x] Crear modelo grados
-- [ ] Corregir el buscador y paginacion
-- [ ] Llenado de datos aleatorios
 - [x] Validaciones
 - [x] Paginacion(index)
 - [x] Buscador(index)
 - [x] Mensages flash
+- [ ] crear vista show y activate
+- [ ] Corregir el buscador y paginacion
+- [ ] Llenado de datos aleatorios
 - [ ] Vista del progreso general(disponible solo hasta la creacion del dashboard)
 - [ ] Vista calendario(disponible solo cuando el calendario se haga)
 - [ ] Avisar cuando se tremina o empieza un grado
 - [ ] Integrar este controlador al sistema.
 - [ ] Mejorar la vista con iconos
+- [ ] Verificar funcionamiento
 
 ## Grupos
 Los grupos pertenecen a los grados y dentro se encuentran los alumnos agrupados, dependiendo de en que grado se encuentren dependera su numero.
-- [ ] Crear controlador grupos
-- [ ] Crear vistas para grupos
-- [ ] Crear modelo grupos
-- [ ] Llenado de datos aleatorios
+- [x] Crear controlador grupos
+- [x] - Crear metodo y vista new
+- [x] - Crear metodo y vista index
+- [x] - Crear metodo y vista edit
+- [x] - Crear metodo y vista show
+- [ ] - Crear metodo update
+- [ ] - Crear metodo delete
+- [ ] - Crear metodo store
+- [x] Crear modelo grupos
+- [x] - Crear metodo store
+- [x] - Crear metodo get_all
+- [x] - Crear metodo show
+- [x] - Crear metodo update
+- [x] - Crear metodo delete
 - [ ] Validaciones
 - [ ] Mensages flash
+- [ ] Paginacion
+- [ ] Buscador
+- [ ] Verificar funcionamiento
+- [ ] Llenado de datos aleatorios
 - [ ] Colocar a los alumnos nuevos o aprobados(hasta que este la tabla alumnos y calendario)
 
 ## Otros
 Lista de controladores faltantes y terminados o empezados:
-- grados
-- calendario
-- grupos
-- materias
-- documentos
-- documentos_alumnos
-- trabajos
-- asistencia
-- paraescola
-- horarios
-- alumnos
-- profesor
-- home
-- auth
-- settings
+- [ ] grados
+- [x] - Empezado
+- [x] - Parcialmente
+- [ ] - Totalmente
+- [ ] grupos
+- [x] - Empezado
+- [ ] - Parcialmente
+- [ ] - Totalmente
+- [ ] calendario
+- [ ] materias
+- [ ] documentos
+- [ ] documentos_alumnos
+- [ ] trabajos
+- [ ] asistencia
+- [ ] paraescola
+- [ ] horarios
+- [ ] alumnos
+- [ ] profesor
+- [ ] home
+- [x] - Empezado
+- [x] - Parcialmente
+- [ ] - Totalmente
+- [ ] auth
+- [ ] settings

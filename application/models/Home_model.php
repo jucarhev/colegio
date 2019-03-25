@@ -9,6 +9,7 @@ class Home_model extends CI_Model {
 	public function menu_lateral(){
 		$data = array(
 			'Grados' => count($this->db->get('grados')->result()),
+			'Grupos' => count($this->db->get('grupos')->result()),
 		);
 		return $data;
 	}
