@@ -10,6 +10,9 @@ class Home_model extends CI_Model {
 		$data = array(
 			'Grados' => count($this->db->get('grados')->result()),
 			'Grupos' => count($this->db->get('grupos')->result()),
+			'Alumnos' => count($this->db->get('alumnos')->result()),
+			'Profesores' => count($this->db->get('profesor')->result()),
+			'Materias' => count($this->db->get('materias')->result()),
 		);
 		return $data;
 	}

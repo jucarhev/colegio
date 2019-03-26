@@ -115,11 +115,14 @@ CREATE TABLE profesor(
 	genero enum("Masculino","Femenino"),
 	fecha_nacimiento date,
 	domicilio text,
-	profesion varchar(100)
+	carrera varchar(100),
+	id_contrato int(10)
 )ENGINE=INNODB;
 
 
-
+create table contrato(
+	id int(10) not null auto_increment primary key,
+)engine=innodb;
 
 CREATE USER 'colegio'@'localhost' identified by 'colegio';
 GRANT ALL PRIVILEGES ON colegio.* TO colegio@localhost;

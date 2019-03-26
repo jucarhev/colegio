@@ -6,3 +6,8 @@ Sistema de administración escolar programado en CodeIgniter, la base de datos v
 Tema bootstrap flat **bootswatch v3.4.1**: Homepage: http://bootswatch.com, Copyright 2012-2019, Thomas Park, Licensed under MIT  
 Based on Bootstrap
 
+### Progreso
+Para ver el progreso del proyecto consulte el archivo [TODO.md](http://github.com/pacpac1992/colegio/TODO.md) que se encuentra en la carpeta, ahi podra ver el avance del proyecto.
+
+### Archivo externos
+- Imagen usada como icono en la pestaña.
