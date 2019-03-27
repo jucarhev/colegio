@@ -107,7 +107,7 @@ CREATE TABLE alumnos(
 	matricula int(10)
 )ENGINE=INNODB;
 
-CREATE TABLE profesor(
+CREATE TABLE profesores(
 	id int(10) not null auto_increment primary key,
 	nombre varchar(100) not null,
 	apellido_paterno varchar(100) not null,

@@ -6,4 +6,9 @@ $route['404_override'] = 'home/error_404';
 $route['translate_uri_dashes'] = FALSE;
 
 
+
+$route['profesores/pagina/(:num)'] = 'profesores/index/$1';
+$route['profesores'] = 'profesores/index';
+
+$route['grados/pagina/(:num)'] = 'grados/index/$1';
 $route['grados'] = 'grados/index';

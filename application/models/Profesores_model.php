@@ -6,6 +6,15 @@ class Profesores_model extends CI_Model {
 		parent::__construct();
 	}
 
+	function get_all($nombre,$inicio=FALSE,$cantidad=FALSE){
+		$this->db->like('nombre', $nombre);
+		if ($inicio !== FALSE && $cantidad !== FALSE) {
+			$this->db->limit($cantidad,$inicio);
+		}
+		$result = $this->db->get('profesor');
+		return $result->result();
+	}
+
 }
 
 /* End of file Profesores_model.php */

@@ -12,7 +12,7 @@
 	<div class="panel-body">
 		
 		<div class="col-md-12">
-			<?php echo form_open('grados/index',array('class'=>'m5')); ?>
+			<?php echo form_open('grados/search',array('class'=>'m5')); ?>
 			<div class="input-group" id="adv-search">
 				<input type="text" class="form-control" name="search" placeholder="Search for snippets" />
 				<div class="input-group-btn">

@@ -10,18 +10,27 @@ class Grados extends CI_Controller {
 		$this->menu = array("menu" => $this->Home_model->menu_lateral());
 	}
 
-	public function index($offset = 0){
-		$search = '';
-		if ($this->input->post('search')) {
-			$search = $this->input->post('search');
+	public function index($nropagina=FALSE){
+		$inicio = 0;
+		$mostrarpor = 5;
+
+		if ($nropagina) {
+			$inicio = ($nropagina - 1) * $mostrarpor;
 		}
 
-		$config['base_url'] = base_url('grados/index');
-		$config['per_page'] = 5;
-		$config['total_rows'] = count($this->Grados_model->count_grados());
-		$this->pagination->initialize($config);
+		$buscar = '';
+		if ($this->session->userdata('buscador')) {
+			$buscar = $this->session->userdata('buscador');
+			$this->session->unset_userdata('buscador');
+		}
 
-		$this->vistas('Grados','grados/index',array('grados'=> $this->Grados_model->get_all($config['per_page'],$offset,$search)));
+		$this->configuracion_paginacion($buscar,$mostrarpor);
+
+		$data = array(
+			"grados"=>$this->Grados_model->get_all($buscar,$inicio,$mostrarpor) 
+		);
+
+		$this->vistas('Grados','grados/index',$data);
 	}
 
 	public function new(){
@@ -107,11 +116,31 @@ class Grados extends CI_Controller {
 		}
 	}
 
+	public function search(){
+		$buscador = $this->input->post('search');
+		$array = array(
+			'buscador' => $buscador
+		);
+		$this->session->set_userdata( $array );
+		redirect(base_url().'grados');
+	}
+
 	/* Metodos privados */
 	private function vistas($title='Dashboard',$vista='home/index',$data=null){
 		$this->load->view('layouts/header',array('title'=>$title));
 		$this->load->view($vista,$data);
 		$this->load->view('layouts/footer',$this->menu);
+	}
+
+	private function configuracion_paginacion($buscar,$mostrarpor){
+		$config['base_url'] = base_url().'grados/pagina/';
+		$config['total_rows'] = count($this->Grados_model->get_all($buscar));
+		$config['per_page'] = $mostrarpor;
+		$config['uri_segment'] = 3;
+		$config['num_links'] = 2;
+		$config['use_page_numbers'] = TRUE;
+		$config['first_url'] = base_url().'grados';
+		$this->pagination->initialize($config);
 	}
 
 }
