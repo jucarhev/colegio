@@ -41,32 +41,35 @@ Los grupos pertenecen a los grados y dentro se encuentran los alumnos agrupados,
 - [x] - Crear metodo y vista index
 - [x] - Crear metodo y vista edit
 - [x] - Crear metodo y vista show
-- [ ] - Crear metodo update
-- [ ] - Crear metodo delete
-- [ ] - Crear metodo store
+- [x] - Programar metodo update
+- [x] - Programar metodo delete
+- [x] - Programar metodo store
+- [ ] - Programar metodo show
 - [x] Crear modelo grupos
 - [x] - Crear metodo store
 - [x] - Crear metodo get_all
 - [x] - Crear metodo show
 - [x] - Crear metodo update
 - [x] - Crear metodo delete
-- [ ] Validaciones
-- [ ] Mensages flash
-- [ ] Paginacion
-- [ ] Buscador
+- [x] Validaciones
+- [x] Mensages flash
+- [X] Paginacion
+- [X] Buscador
 - [ ] Verificar funcionamiento
 - [ ] Llenado de datos aleatorios
 - [ ] Colocar a los alumnos nuevos o aprobados(hasta que este la tabla alumnos y calendario)
 
 ## Profesores
+*Nota* la tabla se llama profesor. hacer cambios y dentro del modelo
 - [ ] Crear controlador profesores
 - [ ] - Crear metodo y vista new
 - [x] - Crear metodo y vista index
 - [ ] - Crear metodo y vista edit
 - [ ] - Crear metodo y vista show
-- [ ] - Crear metodo update
-- [ ] - Crear metodo delete
-- [ ] - Crear metodo store
+- [ ] - Programar metodo update
+- [ ] - Programar metodo delete
+- [ ] - Programar metodo store
+- [ ] - Programar metodo show
 - [ ] Crear modelo profesores
 - [ ] - Crear metodo store
 - [x] - Crear metodo get_all
@@ -79,6 +82,7 @@ Los grupos pertenecen a los grados y dentro se encuentran los alumnos agrupados,
 - [x] Buscador
 - [ ] Verificar funcionamiento
 - [ ] Llenado de datos aleatorios
+- [ ] Renombrar tabla por profesor->profesores al igual que en el modelo
 
 ## Otros
 Lista de controladores faltantes y terminados o empezados:
@@ -88,7 +92,7 @@ Lista de controladores faltantes y terminados o empezados:
 - [ ] - Totalmente
 - [ ] grupos
 - [x] - Empezado
-- [ ] - Parcialmente
+- [x] - Parcialmente
 - [ ] - Totalmente
 - [ ] calendario
 - [ ] materias
@@ -100,6 +104,9 @@ Lista de controladores faltantes y terminados o empezados:
 - [ ] horarios
 - [ ] alumnos
 - [ ] profesor
+- [x] - Empezado
+- [ ] - Parcialmente
+- [ ] - Totalmente
 - [ ] home
 - [x] - Empezado
 - [x] - Parcialmente
