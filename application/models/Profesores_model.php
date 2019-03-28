@@ -11,7 +11,7 @@ class Profesores_model extends CI_Model {
 		if ($inicio !== FALSE && $cantidad !== FALSE) {
 			$this->db->limit($cantidad,$inicio);
 		}
-		$result = $this->db->get('profesor');
+		$result = $this->db->get('profesores');
 		return $result->result();
 	}
 

@@ -16,7 +16,7 @@ class Grupos_model extends CI_Model {
 		$this->db->select('go.id,go.letra,go.turno,go.id_asesor,go.id_grado,ga.nombre as grado,p.nombre as asesor');
 		$this->db->from('grupos as go');
 		$this->db->join('grados as ga', 'go.id_grado=ga.id');
-		$this->db->join('profesor as p', 'go.id_asesor=p.id');
+		$this->db->join('profesores as p', 'go.id_asesor=p.id');
 		$result = $this->db->get();
 
 		return $result->result();

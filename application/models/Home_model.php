@@ -11,7 +11,7 @@ class Home_model extends CI_Model {
 			'Grados' => count($this->db->get('grados')->result()),
 			'Grupos' => count($this->db->get('grupos')->result()),
 			'Alumnos' => count($this->db->get('alumnos')->result()),
-			'Profesores' => count($this->db->get('profesor')->result()),
+			'Profesores' => count($this->db->get('profesores')->result()),
 			'Materias' => count($this->db->get('materias')->result()),
 		);
 		return $data;

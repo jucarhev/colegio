@@ -33,6 +33,10 @@ class Profesores extends CI_Controller {
 		$this->layouts('profesores','profesores/index',$data);
 	}
 
+	public function new(){
+		$this->layouts('Nuevo Profesor','profesores/new');
+	}
+
 	public function search(){
 		$buscador = $this->input->post('search');
 		$array = array(
@@ -44,7 +48,7 @@ class Profesores extends CI_Controller {
 
 	// Metodos privados
 
-	private function layouts($title='Home',$vista="home/index",$data){
+	private function layouts($title='Home',$vista="home/index",$data=null){
 		$this->load->view('layouts/header',array('title'=>$title));
 		$this->load->view($vista, $data);
 		$this->load->view('layouts/footer',$this->menu);
