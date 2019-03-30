@@ -46,6 +46,33 @@ class Profesores extends CI_Controller {
 		redirect(base_url().'profesores');
 	}
 
+	public function create(){
+		$nombre = $this->input->post('nombre');
+		$apellido_paterno = $this->input->post('apellido_paterno');
+		$apellido_materno = $this->input->post('apellido_materno');
+
+		$this->form_validation->set_rules('nombre', 'Nombre', 'trim|required');
+		$this->form_validation->set_rules('apellido_paterno','Apellido paterno','trim|required');
+		$this->form_validation->set_rules('apellido_materno','Apellido materno','trim|required');
+
+		if ($this->form_validation->run() == TRUE) {
+			$data = array(
+				'nombre' => $nombre,
+				'apellido_paterno' => $apellido_paterno,
+				'apellido_materno' => $apellido_materno,
+			);
+			if($this->Profesores_model->save($data)){
+				$this->session->set_flashdata('Success', 'Datos guadados');
+				redirect(base_url().'profesores/index');
+			}else{
+				$this->session->set_flashdata('Error', 'Ocurrio un error');
+				redirect(base_url().'profesores/new');
+			}
+		} else {
+			$this->new();
+		}
+	}
+
 	// Metodos privados
 
 	private function layouts($title='Home',$vista="home/index",$data=null){

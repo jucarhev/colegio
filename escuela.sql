@@ -24,7 +24,6 @@ CREATE TABLE grupos(
 	id int(10) not null auto_increment primary key,
 	letra varchar(2) not null,
 	turno enum("Matutino","Vespertino"),
-	id_asesor int(10),
 	id_grado int(10)
 )ENGINE=INNODB;
 
@@ -122,8 +121,37 @@ CREATE TABLE profesores(
 
 create table contrato(
 	id int(10) not null auto_increment primary key,
+	fecha date,
+	tipo enum('temporal','permanente','anual'),
+	inicio date,
+	fin date,
+	sueldo int(10),
+	folio int(10),
+	id_profesor int(10)
 )engine=innodb;
 
+CREATE TABLE profesor_grupo(
+	id int(10) not null auto_increment primary key,
+	id_grupo int(10),
+	id_profesor int(10),
+	fechainicio date,
+	fecha_fin date
+)engine=innodb;
+
+
+-- operaciones
 CREATE USER 'colegio'@'localhost' identified by 'colegio';
 GRANT ALL PRIVILEGES ON colegio.* TO colegio@localhost;
 FLUSH PRIVILEGES;
+
+-- crear una vista
+CREATE VIEW 
+vista_futbolistas AS 
+SELECT futbolistas.id, nombre, apellidos FROM futbolistas
+INNER JOIN tarjetas_amarillas 
+ON futbolistas.id = tarjetas_amarillas.id_futbolista;
+
+CREATE PROCEDURE proc_sacar_clientes_tipo (IN tipoCliente INT)
+-> BEGIN
+-> SELECT * FROM clientes WHERE tipo = tipoCliente;
+-> END

@@ -15,3 +15,6 @@ $route['grados'] = 'grados/index';
 
 $route['grupos/pagina/(:num)'] = 'grupos/index/$1';
 $route['grupos'] = 'grupos/index';
+
+$route['materias/pagina/(:num)'] = 'materias/index/$1';
+$route['materias'] = 'materias/index';

@@ -1,9 +1,14 @@
 <div class="panel panel-primary">
-	<div class="panel-heading">
-		<h3>
-			Grados
-		</h3>
+
+	<div class="panel-heading clearfix">
+		<h3 class="panel-title pull-left" style="padding-top: 7.5px;">Editar </h3>
+		<div class="pull-right">
+			<a href="<?php echo base_url('grados/new'); ?>" class="btn btn-success btn-sm">
+				<span class="fa fa-times"></span> Close
+			</a>
+		</div>
 	</div>
+
 	<div class="panel-body">
 
 		<?php if ($this->session->flashdata('Error')){ 

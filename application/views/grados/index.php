@@ -4,7 +4,7 @@
       <h3 class="panel-title pull-left" style="padding-top: 7.5px;">Grados</h3>
       <div class="pull-right">
         <a href="<?php echo base_url('grados/new'); ?>" class="btn btn-success btn-sm">
-        	<span class="fa fa-plus"></span>
+        	<span class="fa fa-plus"></span> Add
         </a>
       </div>
     </div>
@@ -62,7 +62,8 @@
 						<a href="<?= base_url(); ?>grados/edit/<?= $grado->id; ?>" class="btn btn-warning btn-sm">
 							<span class="fa fa-pencil"></span>
 						</a>
-						<a href="<?= base_url(); ?>grados/show/<?= $grado->id; ?>" class="btn btn-info btn-sm">
+						<a href="#" onclick="show(<?= $grado->id; ?>);return false" class="btn btn-info btn-sm"
+							id="show">
 							<span class="fa fa-eye"></span>
 						</a>
 					</td>
@@ -74,4 +75,35 @@
 	<div class="panel-footer">
 		<?= $this->pagination->create_links(); ?>
 	</div>
+</div>
+
+
+
+<script>
+	function show(id) {
+		var csrf_value = '<?php echo $this->security->get_csrf_hash(); ?>';
+		$('#myModal').modal('show');
+		$.post('<?php echo base_url(); ?>grados/show/'+id,{'csrf_test_name': csrf_value }, function(data) {
+			$('.modal-body').html(data);
+		},'json');
+	}
+</script>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>

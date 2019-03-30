@@ -15,6 +15,10 @@ class Profesores_model extends CI_Model {
 		return $result->result();
 	}
 
+	public function save($data){
+		return $this->db->insert('profesores', $data);
+	}
+
 }
 
 /* End of file Profesores_model.php */
