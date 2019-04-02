@@ -8,6 +8,10 @@ Controlador principal
 - [x] Crear vista vista home
 - [x] Crear controller y vista 404
 - [ ] Dashboard
+- [ ] - Diseño
+- [ ] - Panels
+- [ ] - Links
+- [ ] - Funciones
 - [x] layout header
 - [x] layout footer
 

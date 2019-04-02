@@ -1,3 +1,8 @@
+<ol class="breadcrumb">
+  <li><a href="<?php echo base_url(); ?>">Home</a></li>
+  <li class="active">Materias</li>
+</ol>
+
 <div class="panel panel-primary">
 	<div class="panel-heading clearfix">
 		<h3 class="panel-title pull-left" style="padding-top: 7.5px;">Materias</h3>

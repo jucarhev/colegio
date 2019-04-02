@@ -1,13 +1,18 @@
+<ol class="breadcrumb">
+	<li><a href="<?php echo base_url(); ?>">Home</a></li>
+	<li class="active">Profesores</li>
+</ol>
+
 <div class="panel panel-primary">
 	
 	<div class="panel-heading clearfix">
-      <h3 class="panel-title pull-left" style="padding-top: 7.5px;">profesores</h3>
-      <div class="pull-right">
-        <a href="<?php echo base_url('profesores/new'); ?>" class="btn btn-success btn-sm">
-        	<span class="fa fa-plus"></span>
-        </a>
-      </div>
-    </div>
+		<h3 class="panel-title pull-left" style="padding-top: 7.5px;">profesores</h3>
+		<div class="pull-right">
+			<a href="<?php echo base_url('profesores/new'); ?>" class="btn btn-success btn-sm">
+			<span class="fa fa-plus"></span>
+			</a>
+		</div>
+	</div>
 
 	<div class="panel-body">
 		
