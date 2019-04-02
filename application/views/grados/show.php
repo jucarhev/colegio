@@ -1,3 +1,9 @@
+<ol class="breadcrumb">
+	<li><a href="<?php echo base_url(); ?>">Home</a></li>
+	<li><a href="<?php echo base_url('grados/index'); ?>">Grados</a></li>
+	<li class="active">New</li>
+</ol>
+
 <div class="panel panel-primary">
 	<div class="panel-heading">
 		<h3>

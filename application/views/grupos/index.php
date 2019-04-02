@@ -1,3 +1,8 @@
+<ol class="breadcrumb">
+  <li><a href="<?php echo base_url(); ?>">Home</a></li>
+  <li class="active">Grupos</li>
+</ol>
+
 <div class="panel panel-primary">
 	
 	<div class="panel-heading clearfix">
