@@ -10,10 +10,20 @@
  */
  
 if (! function_exists('fechas')){
-	function fechas($fecha_actual)	{
+	function fecha_actual($inicio,$fin)	{
 		$dia = date("d");
 		$mes = date("m");
 		$anio = date("Y");
+
+		#return $anio.'-'.$mes.'-'.$dia;
+
+		$_inicio = explode('-', $inicio);
+
+		if ($anio == $_inicio[0]) {
+			return $anio;
+		}else{
+			return $anio;
+		}
 	}
 }
 

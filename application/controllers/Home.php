@@ -6,12 +6,13 @@ class Home extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Home_model');
+		$this->load->helper('fechas');
 	}
 
 	public function index(){
 		$data = array("menu" => $this->Home_model->menu_lateral());
 		$this->load->view('layouts/header',array('title'=>'Home'));
-		$this->load->view('home/home');
+		$this->load->view('home/home',array('fecha'=>$this->panel()));
 		$this->load->view('layouts/footer',$data);
 	}
 
@@ -20,6 +21,15 @@ class Home extends CI_Controller {
 		$this->load->view('layouts/header',array('title'=>'Error 404'));
 		$this->load->view('home/404.php');
 		$this->load->view('layouts/footer',$data);
+	}
+
+	public function panel(){
+		$datos = [];
+		$resultados = $this->Home_model->comprobar_curso_actual();
+		foreach ($resultados as $value) {
+			array_push($datos,fecha_actual($value->inicio,$value->fin));
+		}
+		return $datos;
 	}
 
 }

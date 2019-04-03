@@ -17,6 +17,16 @@ class Home_model extends CI_Model {
 		return $data;
 	}
 
+	public function panel(){
+		$data = array(
+			'Grados' => ['Grados','grados/index','fa-level',count($this->db->get('grados')->result())]
+		);
+	}
+
+	public function comprobar_curso_actual(){
+		return $this->db->get('grados')->result();
+	}
+
 }
 
 /* End of file Home_model.php */
