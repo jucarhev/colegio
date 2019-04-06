@@ -103,7 +103,7 @@ CREATE TABLE alumnos(
 	municipio varchar(255),
 	localidad varchar(255),
 	codigopostal int(6),
-	matricula int(10)
+	matricula int(12)
 )ENGINE=INNODB;
 
 CREATE TABLE profesores(
@@ -139,6 +139,12 @@ CREATE TABLE profesor_grupo(
 )engine=innodb;
 
 
+CREATE TABLE alumnos_grupo(
+	id int(10) not null auto_increment primary key,
+	id_grupo int(10),
+	id_alumno int(10) unique
+)engine=innodb;
+
 -- operaciones
 CREATE USER 'colegio'@'localhost' identified by 'colegio';
 GRANT ALL PRIVILEGES ON colegio.* TO colegio@localhost;
@@ -155,3 +161,11 @@ CREATE PROCEDURE proc_sacar_clientes_tipo (IN tipoCliente INT)
 -> BEGIN
 -> SELECT * FROM clientes WHERE tipo = tipoCliente;
 -> END
+
+
+
+
+-- select * from alumnos as a 
+-- inner join alumnos_grupo as ag 
+-- on a.id=ag.id_alumno inner join grupos as g
+-- on ag.id_grupo=g.id;

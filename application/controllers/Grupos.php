@@ -7,6 +7,7 @@ class Grupos extends CI_Controller {
 		$this->load->model('Grupos_model');
 		$this->load->model('Grados_model');
 		$this->load->model('Profesores_model');
+		$this->load->model('Alumnos_model');
 		
 		$this->load->model('Home_model');
 		$this->menu = array("menu" => $this->Home_model->menu_lateral());
@@ -74,8 +75,7 @@ class Grupos extends CI_Controller {
 	public function show($id){
 		$this->vistas('Nuevo Grupo','grupos/show',array(
 			'grupo'=>$this->Grupos_model->show($id),
-			'grados' => $this->Grados_model->get_all(''),
-			'profesores' => $this->Profesores_model->get_all('')
+			'alumnos' => $this->Alumnos_model->alumnos_grupo($id)
 			));
 	}
 

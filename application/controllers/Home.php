@@ -12,7 +12,7 @@ class Home extends CI_Controller {
 	public function index(){
 		$data = array("menu" => $this->Home_model->menu_lateral());
 		$this->load->view('layouts/header',array('title'=>'Home'));
-		$this->load->view('home/home',array('fecha'=>$this->panel()));
+		$this->load->view('home/home',array('fecha'=>''));
 		$this->load->view('layouts/footer',$data);
 	}
 

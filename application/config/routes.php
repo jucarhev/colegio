@@ -18,3 +18,6 @@ $route['grupos'] = 'grupos/index';
 
 $route['materias/pagina/(:num)'] = 'materias/index/$1';
 $route['materias'] = 'materias/index';
+
+$route['alumnos/pagina/(:num)'] = 'alumnos/index/$1';
+$route['alumnos'] = 'alumnos/index';

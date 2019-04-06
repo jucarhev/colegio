@@ -1,6 +1,34 @@
 <?php 
 /**
- * Function Name
+ * Function fechas
+ *
+ * Function Description
+ *
+ * @access	public
+ * @param	string	inicio
+ * @param	string	fin
+ * @return	type	
+ */
+ 
+if (! function_exists('fechas')){
+	function fecha_actual($inicio,$fin)	{
+		$fecha_actual = date('Y').'-'.date('m').'-'.date('d');
+
+		$array_inicio = explode('-',$inicio);
+		$array_fin = explode('-',$fin);
+		$array_actual = explode('-',$fecha_actual);
+
+		if ($array_actual > $array_inicio && $array_actual < $array_fin) {
+			echo TRUE;
+		}else{
+			echo FALSE;
+		}
+	}
+}
+
+
+/**
+ * Function meses
  *
  * Function Description
  *
@@ -8,22 +36,20 @@
  * @param	type	name
  * @return	type	
  */
- 
-if (! function_exists('fechas')){
-	function fecha_actual($inicio,$fin)	{
-		$dia = date("d");
-		$mes = date("m");
-		$anio = date("Y");
-
-		#return $anio.'-'.$mes.'-'.$dia;
-
-		$_inicio = explode('-', $inicio);
-
-		if ($anio == $_inicio[0]) {
-			return $anio;
-		}else{
-			return $anio;
-		}
+if(! function_exists('meses')){
+	function meses($name){
+		$enero = 31;
+		$febrero = 28;
+		$marzo = 31;
+		$abril = 30;
+		$mayo = 31;
+		$junio = 30;
+		$julio = 31;
+		$agosto = 31;
+		$septiembre =30;
+		$octubre =  31;
+		$noviembre = 30;
+		$diciembre= 31;
 	}
 }
 
