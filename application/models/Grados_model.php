@@ -7,9 +7,9 @@ class Grados_model extends CI_Model {
 		parent::__construct();
 	}
 
-	function get_all($nombre,$inicio=FALSE,$cantidad=FALSE){
+	public function get_all($nombre,$inicio=FALSE,$cantidad=FALSE){
 		
-		$this->db->select('g.id,g.nombre,g.tipo,g.status,fg.fecha_inicio,fg.fecha_fin');
+		$this->db->select('fg.id as id_fg,g.id,g.nombre,g.tipo,g.status,fg.fecha_inicio,fg.fecha_fin');
 		$this->db->from('grados as g');
 		$this->db->join('fechas_grados as fg', 'fg.id_grado=g.id');
 		
@@ -47,27 +47,22 @@ class Grados_model extends CI_Model {
 		}
 	}
 
-	public function testing(){
-			$res = $this->db->select('id')
-							->where('nombre' , 'Segundo')
-							->where('status' , 'Inactivo')
-							->where('tipo' , 'Semestre')
-							->where('created_at' , '2019-04-07')
-							->get('grados')
-							->row();
-		print_r($res->id);
-
+	public function store_fechas_grados($data){
+		return $this->db->insert('fechas_grados', $data);
 	}
 
 	public function show($id){
-		$this->db->where('id', $id);
-		$resultado = $this->db->get('grados');
+		$this->db->where('g.id', $id);
+		$this->db->select('g.id,g.nombre,g.tipo,g.status,fg.fecha_inicio,fg.fecha_fin');
+		$this->db->from('grados as g');
+		$this->db->join('fechas_grados as fg', 'fg.id_grado=g.id');
+		$resultado = $this->db->get();
 		return $resultado->row();
 	}
 
 	public function update($id,$data){
 		$this->db->where('id', $id);
-		return $this->db->update('grados', $data);
+		return $this->db->update('grados',$data);
 	}
 
 	public function delete($id){
@@ -83,3 +78,4 @@ class Grados_model extends CI_Model {
 
 /* End of file Grados_model.php */
 /* Location: ./application/models/Grados_model.php */
+

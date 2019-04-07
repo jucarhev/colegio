@@ -56,7 +56,7 @@
 					<td><?= $grupo->id; ?></td>
 					<td><?= $grupo->letra; ?></td>
 					<td><?= $grupo->turno; ?></td>
-					<td><?= $grupo->asesor; ?></td>
+					<td><!--?= $grupo->asesor; ?--></td>
 					<td><?= $grupo->grado; ?></td>
 					<td>
 						<a href="<?= base_url(); ?>grupos/delete/<?= $grupo->id; ?>" class="btn btn-danger btn-sm">

@@ -47,7 +47,6 @@ class Grupos extends CI_Controller {
 	public function create(){
 		$letra = $this->input->post('letra');
 		$turno = $this->input->post('turno');
-		$id_asesor= $this->input->post('id_asesor');
 		$id_grado = $this->input->post('id_grado');
 
 		// Validaciones
@@ -57,7 +56,6 @@ class Grupos extends CI_Controller {
 			$data = array(
 				'letra' => $letra,
 				'turno' => $turno,
-				'id_asesor' => $id_asesor,
 				'id_grado' => $id_grado
 			);
 			if ($this->Grupos_model->store($data)) {

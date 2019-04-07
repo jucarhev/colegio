@@ -6,7 +6,10 @@ class Grados extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Home_model');
 		$this->load->model('Grados_model');
+		$this->load->model('Grupos_model');
+		
 		$this->load->helper('date');
+		$this->load->helper('fechas');
 
 		$this->menu = array("menu" => $this->Home_model->menu_lateral());
 	}
@@ -27,6 +30,8 @@ class Grados extends CI_Controller {
 
 		$this->configuracion_paginacion($buscar,$mostrarpor);
 
+		$this->comprobar_status($this->Grados_model->get_all(''));
+		
 		$data = array(
 			"grados"=>$this->Grados_model->get_all($buscar,$inicio,$mostrarpor) 
 		);
@@ -71,7 +76,10 @@ class Grados extends CI_Controller {
 	}
 	
 	public function show($id){
-		$this->vistas('Nuevo Grado','grados/show',array('grado'=>$this->Grados_model->show($id)));
+		$data = array(
+			'grado'=>$this->Grados_model->show($id),
+			'grupos'=>$this->Grupos_model->listar_grupos_grados($id));
+		$this->vistas('Nuevo Grado','grados/show',$data);
 	}
 
 	public function edit($id){
@@ -81,22 +89,17 @@ class Grados extends CI_Controller {
 	public function update(){
 		$id= $this->input->post('id',TRUE);
 		$nombre = $this->input->post('nombre',TRUE);
-		$inicio = $this->input->post('inicio',TRUE);
-		$fin = $this->input->post('fin',TRUE);
+		$inicio = $this->input->post('fecha_inicio',TRUE);
+		$fin = $this->input->post('fecha_fin',TRUE);
 		$tipo = $this->input->post('tipo',TRUE);
 
 		$this->form_validation->set_rules('nombre','Nombre','required');
 		$this->form_validation->set_rules('tipo','Tipo','required');
 
 		if ($this->form_validation->run() == TRUE) {
-			$data = array(
-				'nombre' => $nombre,
-				'inicio' => $inicio,
-				'fin' => $fin,
-				'tipo' => $tipo,
-			);
 
-			if ($this->Grados_model->update($id,$data)) {
+			if ($this->Grados_model->update($id,array('nombre' => $nombre, 'tipo' => $tipo))) {
+				$this->Grados_model->store_fechas_grados(array('id_grado'=>$id,'fecha_inicio' => $inicio,'fecha_fin' => $fin));
 				$this->session->set_flashdata('Success','Registro guardado');
 				redirect(base_url().'grados/index');
 			}else{
@@ -127,10 +130,6 @@ class Grados extends CI_Controller {
 		redirect(base_url().'grados');
 	}
 
-	public function testing(){
-		$this->Grados_model->testing();
-	}
-
 	/* Metodos privados */
 	private function vistas($title='Dashboard',$vista='home/index',$data=null){
 		$this->load->view('layouts/header',array('title'=>$title));
@@ -147,6 +146,20 @@ class Grados extends CI_Controller {
 		$config['use_page_numbers'] = TRUE;
 		$config['first_url'] = base_url().'grados';
 		$this->pagination->initialize($config);
+	}
+
+	private function comprobar_status($data){
+		//$data = $this->Grados_model->get_all('');
+		foreach ($data as $value) {
+			$inicio = $value->fecha_inicio;
+			$fin = $value->fecha_fin;
+
+			if(fecha_actual($inicio,$fin)){
+				$this->Grados_model->update($value->id,array('status' => 'Activo'));
+			}else{
+				$this->Grados_model->update($value->id,array('status' => 'Inactivo'));
+			}
+		}
 	}
 
 }

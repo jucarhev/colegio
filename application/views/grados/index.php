@@ -59,16 +59,21 @@
 					<td><?= $grado->tipo; ?></td>
 					<td><?= $grado->fecha_inicio; ?></td>
 					<td><?= $grado->fecha_fin; ?></td>
-					<td><?= $grado->status; ?></td>
 					<td>
-						<a href="<?= base_url(); ?>grados/delete/<?= $grado->id; ?>" class="btn btn-danger btn-sm">
+						<?php if ($grado->status == 'Inactivo'){ ?>
+							<strong class="text-danger"><?php echo $grado->status; ?></strong>
+						<?php }else{ ?>
+							<strong class="text-success"><?php echo $grado->status; ?></strong>
+						<?php } ?>
+					</td>
+					<td>
+						<a href="#" class="btn btn-danger btn-sm" onclick="eliminar(<?= $grado->id; ?>);return false">
 							<span class="fa fa-trash"></span>
 						</a>
 						<a href="<?= base_url(); ?>grados/edit/<?= $grado->id; ?>" class="btn btn-warning btn-sm">
 							<span class="fa fa-pencil"></span>
 						</a>
-						<a href="#" onclick="show(<?= $grado->id; ?>);return false" class="btn btn-info btn-sm"
-							id="show">
+						<a href="<?= base_url(); ?>grados/show/<?= $grado->id; ?>" class="btn btn-info btn-sm">
 							<span class="fa fa-eye"></span>
 						</a>
 					</td>
@@ -82,33 +87,20 @@
 	</div>
 </div>
 
-
-
 <script>
-	function show(id) {
-		var csrf_value = '<?php echo $this->security->get_csrf_hash(); ?>';
-		$('#myModal').modal('show');
-		$.post('<?php echo base_url(); ?>grados/show/'+id,{'csrf_test_name': csrf_value }, function(data) {
-			$('.modal-body').html(data);
-		},'json');
+	function eliminar(id){
+		Swal.fire({
+			title: '¿Deseas eliminar el registro?',
+			text: "Se eliminara este registro",
+			type: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Si'
+			}).then((result) => {
+				if (result.value) {
+					window.location ="<?php echo base_url().'grados/delete/'; ?>"+id;
+				}
+			});
 	}
 </script>
-
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>

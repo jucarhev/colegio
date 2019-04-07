@@ -41,8 +41,8 @@
 				<?php 
 				$data = array(
 					'type'  => 'date',
-					'name'  => 'inicio',
-					'id'    => 'inicio',
+					'name'  => 'fecha_inicio',
+					'id'    => 'fecha_inicio',
 					'value' => $grado->fecha_inicio,
 					'class' => 'form-control');
 					echo form_input($data); ?>
@@ -53,8 +53,8 @@
 				<?php 
 				$data = array(
 					'type'  => 'date',
-					'name'  => 'fin',
-					'id'    => 'fin',
+					'name'  => 'fecha_fin',
+					'id'    => 'fecha_fin',
 					'value' => $grado->fecha_fin,
 					'class' => 'form-control');
 					echo form_input($data); ?>

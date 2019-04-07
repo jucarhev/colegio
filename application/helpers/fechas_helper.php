@@ -19,9 +19,9 @@ if (! function_exists('fechas')){
 		$array_actual = explode('-',$fecha_actual);
 
 		if ($array_actual > $array_inicio && $array_actual < $array_fin) {
-			echo TRUE;
+			return TRUE;
 		}else{
-			echo FALSE;
+			return FALSE;
 		}
 	}
 }

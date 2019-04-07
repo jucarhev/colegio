@@ -13,13 +13,18 @@ class Grupos_model extends CI_Model {
 			$this->db->limit($cantidad,$inicio);
 		}
 
-		$this->db->select('go.id,go.letra,go.turno,go.id_asesor,go.id_grado,ga.nombre as grado,p.nombre as asesor');
+		$this->db->select('go.id,go.letra,go.turno,go.id_grado,ga.nombre as grado');
 		$this->db->from('grupos as go');
 		$this->db->join('grados as ga', 'go.id_grado=ga.id');
-		$this->db->join('profesores as p', 'go.id_asesor=p.id');
 		$result = $this->db->get();
 
 		return $result->result();
+	}
+
+	public function listar_grupos_grados($id){
+		$this->db->where('id_grado', $id);
+		$res = $this->db->get('grupos');
+		return $res->result();
 	}
 
 	public function store($data){
@@ -32,7 +37,10 @@ class Grupos_model extends CI_Model {
 	}
 
 	public function show($id){
-		$this->db->where('id', $id);
+		$this->db->where('go.id', $id);
+		$this->db->select('go.id,go.letra,go.turno,go.id_grado,ga.nombre as grado');
+		$this->db->from('grupos as go');
+		$this->db->join('grados as ga', 'go.id_grado=ga.id');
 		$resultado = $this->db->get('grupos');
 		return $resultado->row();
 	}
