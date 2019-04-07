@@ -67,6 +67,5 @@
 	</div>
 
 	<div class="panel-footer">
-		<?php echo $fecha[0]; ?>
 	</div>
 </div>

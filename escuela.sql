@@ -2,6 +2,7 @@ CREATE DATABASE escuela;
 
 USE escuela;
 
+--------------------------------------------------------------
 CREATE TABLE grados(
 	id int(10) not null auto_increment primary key,
 	nombre varchar(50) unique,
@@ -10,6 +11,23 @@ CREATE TABLE grados(
 	fin date,
 	status enum('Activo','Inactivo')
 )ENGINE=INNODB;
+
+CREATE TABLE grados(
+	id int(10) not null auto_increment primary key,
+	nombre varchar(50) unique,
+	tipo varchar(50),
+	status enum('Activo','Inactivo'),
+	created_at date
+)ENGINE=INNODB;
+
+CREATE TABLE fechas_grados(
+	id int(10) not null auto_increment primary key,
+	id_grado int(10),
+	fecha_fin date,
+	fecha_inicio date,
+	status enum('Terminado','En proceso')
+)ENGINE=INNODB;
+--------------------------------------------------------------
 
 CREATE TABLE calendario(
 	id int(10) not null auto_increment primary key,
@@ -103,7 +121,7 @@ CREATE TABLE alumnos(
 	municipio varchar(255),
 	localidad varchar(255),
 	codigopostal int(6),
-	matricula int(12)
+	matricula int(12) unique
 )ENGINE=INNODB;
 
 CREATE TABLE profesores(
@@ -135,7 +153,8 @@ CREATE TABLE profesor_grupo(
 	id_grupo int(10),
 	id_profesor int(10),
 	fechainicio date,
-	fecha_fin date
+	fecha_fin date,
+	status enum('Aactual','Anterior','Sin asignar')
 )engine=innodb;
 
 

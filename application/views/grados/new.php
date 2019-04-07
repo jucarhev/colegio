@@ -32,7 +32,7 @@
 					echo form_input($data); ?>
 				<?php echo form_error('nombre','<span class="help-block">','</span>'); ?>
 			</div>
-
+			
 			<div class="form-group">
 				<label for="">Fecha inicio</label>
 				<?php 

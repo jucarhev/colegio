@@ -43,7 +43,7 @@
 					'type'  => 'date',
 					'name'  => 'inicio',
 					'id'    => 'inicio',
-					'value' => $grado->inicio,
+					'value' => $grado->fecha_inicio,
 					'class' => 'form-control');
 					echo form_input($data); ?>
 			</div>
@@ -55,7 +55,7 @@
 					'type'  => 'date',
 					'name'  => 'fin',
 					'id'    => 'fin',
-					'value' => $grado->fin,
+					'value' => $grado->fecha_fin,
 					'class' => 'form-control');
 					echo form_input($data); ?>
 			</div>

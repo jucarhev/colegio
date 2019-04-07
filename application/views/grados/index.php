@@ -57,8 +57,8 @@
 					<td><?= $grado->id; ?></td>
 					<td><?= $grado->nombre; ?></td>
 					<td><?= $grado->tipo; ?></td>
-					<td><?= $grado->inicio; ?></td>
-					<td><?= $grado->fin; ?></td>
+					<td><?= $grado->fecha_inicio; ?></td>
+					<td><?= $grado->fecha_fin; ?></td>
 					<td><?= $grado->status; ?></td>
 					<td>
 						<a href="<?= base_url(); ?>grados/delete/<?= $grado->id; ?>" class="btn btn-danger btn-sm">

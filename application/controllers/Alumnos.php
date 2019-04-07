@@ -8,6 +8,7 @@ class Alumnos extends CI_Controller {
 		$this->menu = array("menu" => $this->Home_model->menu_lateral());
 
 		$this->load->model('Alumnos_model');
+		$this->load->helper('matriculas');
 	}
 
 	public function index($nropagina=FALSE){
@@ -36,6 +37,10 @@ class Alumnos extends CI_Controller {
 		$this->vistas('Nuevo Alumnos','alumnos/new');
 	}
 
+	public function show(){
+		echo matriculas();
+	}
+
 	public function create(){
 		$nombre = $this->input->post('nombre',TRUE);
 		$apellido_paterno = $this->input->post('apellido_paterno',TRUE);
@@ -50,7 +55,8 @@ class Alumnos extends CI_Controller {
 			$data = array(
 				'nombre' => $nombre,
 				'apellido_paterno' => $apellido_paterno,
-				'apellido_materno' => $apellido_materno
+				'apellido_materno' => $apellido_materno,
+				'matricula' => matriculas()
 			);
 
 			if ($this->Alumnos_model->store($data)) {

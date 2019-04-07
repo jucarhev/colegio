@@ -6,6 +6,7 @@ class Grados extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Home_model');
 		$this->load->model('Grados_model');
+		$this->load->helper('date');
 
 		$this->menu = array("menu" => $this->Home_model->menu_lateral());
 	}
@@ -53,7 +54,8 @@ class Grados extends CI_Controller {
 				'inicio' => $inicio,
 				'fin' => $fin,
 				'tipo' => $tipo,
-				'status' => 'Inactivo'
+				'status' => 'Inactivo',
+				'created_at' =>  date('Y').'-'.date('m').'-'.date('d')
 			);
 
 			if ($this->Grados_model->store($data)) {
@@ -123,6 +125,10 @@ class Grados extends CI_Controller {
 		);
 		$this->session->set_userdata( $array );
 		redirect(base_url().'grados');
+	}
+
+	public function testing(){
+		$this->Grados_model->testing();
 	}
 
 	/* Metodos privados */
